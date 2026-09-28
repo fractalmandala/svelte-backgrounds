@@ -53,6 +53,8 @@ All other attributes (`class`, `style`, `id`, `aria-*`, …) are passed to the e
 
 > [Aura Gradients](https://auragradients.vercel.app/) are the creation of [Cristian Olivera](https://github.com/CristianOlivera1), and this component gratefully relies on their [MIT License](https://github.com/CristianOlivera1/Aura/blob/main/LICENSE), extending it unchanged.
 
+> [Patterncraft](https://patterncraft.fun/) patterns are the creation of [Megh Bari](https://x.com/meghtrix), and this component gratefully relies on their [MIT License](https://github.com/megh-bari/pattern-craft/blob/main/LICENSE), extending it unchanged.
+
 ## Data
 
 ```ts
