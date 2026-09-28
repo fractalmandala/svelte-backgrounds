@@ -1,4 +1,15 @@
-export { default as Aura } from './Aura.svelte'
-export { default as AuraPicker } from './AuraPicker.svelte'
-export { AURA_PRESETS, AURA_CATEGORIES, getAura } from './registry.js'
-export type { AuraPreset, AuraLayer } from './types.js'
+export { default as Background } from './Background.svelte'
+export { default as BackgroundPicker } from './BackgroundPicker.svelte'
+export {
+	BACKGROUNDS,
+	AURA_PRESETS,
+	PATTERN_PRESETS,
+	AURA_CATEGORIES,
+	PATTERN_CATEGORIES,
+	getBackground,
+	getAura,
+	getPattern,
+	isAura,
+	isPattern
+} from './registry.js'
+export type { BackgroundPreset, AuraPreset, AuraLayer, PatternPreset } from './types.js'

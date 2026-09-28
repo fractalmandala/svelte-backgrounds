@@ -3,5 +3,5 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 
 export default {
 	preprocess: vitePreprocess(),
-	kit: { adapter: adapter(), alias: { 'svelte-aura': 'src/lib/index.ts' } }
+	kit: { adapter: adapter(), alias: { 'svelte-backgrounds': 'src/lib/index.ts' } }
 }

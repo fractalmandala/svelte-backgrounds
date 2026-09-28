@@ -1,8 +1,8 @@
 {
 	"name": "@fractaldesign/svelte-backgrounds",
-	"version": "0.1.0",
-	"description": "Drop-in aura gradient backgrounds for any Svelte 5 / SvelteKit element, component or full app — with 200+ presets and a picker.",
-	"keywords": ["svelte", "sveltekit", "gradient", "background", "aura", "mesh", "blur"],
+	"version": "0.2.0",
+	"description": "Drop-in aura gradients and CSS patterns as backgrounds for any Svelte 5 / SvelteKit element, component or full app — 450+ presets and a picker.",
+	"keywords": ["svelte", "sveltekit", "gradient", "background", "aura", "pattern", "mesh", "blur"],
 	"license": "MIT",
 	"type": "module",
 	"svelte": "./src/lib/index.ts",

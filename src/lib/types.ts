@@ -24,3 +24,19 @@ export interface AuraPreset {
 	description: string
 	layers: AuraLayer[]
 }
+
+/** A single-layer CSS background pattern (grids, dots, masks, glows…). */
+export interface PatternPreset {
+	id: string
+	name: string
+	category: string
+	description?: string
+	/** Declarations applied to one absolutely positioned layer, e.g. "background-image:…;background-size:24px 24px". */
+	css: string
+	/** Extra px to overscan the layer by (set for blurred patterns so edges stay soft). */
+	bleed?: number
+	/** @keyframes rules needed by an `animation` in `css`. */
+	keyframes?: string
+}
+
+export type BackgroundPreset = AuraPreset | PatternPreset

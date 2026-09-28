@@ -1,6 +1,6 @@
 # @fractaldesign/svelte-backgrounds
 
-Set a soft, blurred "aura" gradient background on **anything** in Svelte 5 / SvelteKit — an element, a component, or your whole app. Ships 200+ presets and a picker to browse them.
+Set a background on **anything** in Svelte 5 / SvelteKit — an element, a component, or your whole app. 200+ soft blurred **aura** gradients and 257 CSS **patterns** (grids, dots, masks, glows…), plus a picker to browse them.
 
 ```sh
 pnpm add @fractaldesign/svelte-backgrounds
@@ -10,63 +10,71 @@ pnpm add @fractaldesign/svelte-backgrounds
 
 ```svelte
 <script>
-	import { Aura } from '@fractaldesign/svelte-backgrounds'
+	import { Background } from '@fractaldesign/svelte-backgrounds'
 </script>
 
-<!-- an element / a card -->
-<Aura preset="ember-glow" applyText style="padding:2rem;border-radius:1rem">
+<!-- an aura on a card -->
+<Background preset="ember-glow" applyText style="padding:2rem;border-radius:1rem">
 	Hello
-</Aura>
+</Background>
 
-<!-- render as another tag -->
-<Aura preset="deep-lagoon" as="section">…</Aura>
+<!-- a pattern; render as another tag -->
+<Background preset="basic-grid" as="section">…</Background>
 
 <!-- whole site: pin behind everything (put it in +layout.svelte) -->
-<Aura preset="sunrise-drift" fixed />
+<Background preset="sunrise-drift" fixed />
 ```
 
-`<Aura>` renders a `position: relative` wrapper with the aura layers behind its children, so it works on any box you can put children in. To style a component you don't control, wrap it.
+`<Background>` renders a `position: relative` wrapper with the background behind its children, so it works on any box you can put children in. To style a component you don't control, wrap it.
 
 | Prop | Default | |
 | --- | --- | --- |
-| `preset` | — | Preset id, or a full `AuraPreset` object (bring your own). |
+| `preset` | — | Preset id (aura or pattern), or a preset object (bring your own). |
 | `as` | `"div"` | Tag to render. |
 | `fixed` | `false` | Pin to the viewport, behind the page. |
-| `applyText` | `false` | Also set the preset's suggested text colour. |
-| `blurScale` | `1` | Multiply every layer's blur (e.g. `0.25` for thumbnails). |
+| `applyText` | `false` | Auras only: also set the preset's suggested text colour. |
+| `blurScale` | `1` | Auras only: multiply every layer's blur (e.g. `0.25` for thumbnails). |
 
-All other attributes (`class`, `style`, `id`, `aria-*`, …) are passed to the element.
+All other attributes (`class`, `style`, `id`, `aria-*`, …) are passed to the element. Patterns that don't paint their own colour draw on top of the wrapper's `background-color`, so set one (e.g. `style="background-color: white"`) to control what the pattern sits on.
 
 ## Pick / sample
 
 ```svelte
 <script>
-	import { Aura, AuraPicker } from '@fractaldesign/svelte-backgrounds'
+	import { Background, BackgroundPicker } from '@fractaldesign/svelte-backgrounds'
 	let value = $state('sunrise-drift')
 </script>
 
-<Aura preset={value} fixed />
-<AuraPicker bind:value />
+<Background preset={value} fixed />
+<BackgroundPicker bind:value />
 ```
 
-`AuraPicker` shows a live sample, search, category and light/dark filters, and a grid of previews. Props: `value` (bindable), `onchange(preset)`, `preview` (default `true`), `presets` (restrict the list), `snippetName`. It inherits your text colour and font.
+`BackgroundPicker` shows a live sample, search, an auras/patterns switch, category filters, a light/dark filter for auras, and a grid of previews. Props: `value` (bindable), `onchange(preset)`, `preview` (default `true`), `presets` (restrict the list), `snippetName`. It inherits your text colour and font.
 
 > [Aura Gradients](https://auragradients.vercel.app/) are the creation of [Cristian Olivera](https://github.com/CristianOlivera1), and this component gratefully relies on their [MIT License](https://github.com/CristianOlivera1/Aura/blob/main/LICENSE), extending it unchanged.
 
 ## Data
 
 ```ts
-import { AURA_PRESETS, AURA_CATEGORIES, getAura } from '@fractaldesign/svelte-backgrounds'
+import {
+	BACKGROUNDS, AURA_PRESETS, PATTERN_PRESETS,
+	AURA_CATEGORIES, PATTERN_CATEGORIES,
+	getBackground, getAura, getPattern, isAura, isPattern
+} from '@fractaldesign/svelte-backgrounds'
 ```
 
-Categories: aura, lattice, mesh, nebula, prism, grain, glass, flux. Each preset is `{ id, name, category, mood, dark, base, text, description, layers[] }`; a layer is `{ bg, blend, blur, blurDesktop?, opacity? }`. Blur uses `blur` below 768px and `blurDesktop` (falling back to `blur`) above.
+- **Aura** — `{ id, name, category, mood, dark, base, text, description, layers[] }`; a layer is `{ bg, blend, blur, blurDesktop?, opacity? }`. Blur uses `blur` below 768px and `blurDesktop` (falling back to `blur`) above. Categories: aura, lattice, mesh, nebula, prism, grain, glass, flux.
+- **Pattern** — `{ id, name, category, description?, css, bleed?, keyframes? }`; `css` is applied to one layer. Categories: geometric, effects, gradients, decorative.
+
+Ids are unique across both sets. One pattern shared an id with an aura and is `ember-glow-pattern`.
 
 ## How it works
 
-The base colour is painted on an isolated container; each layer is an absolutely positioned gradient with `mix-blend-mode`, `filter: blur()` and opacity, overscanned by its blur radius so edges stay soft. No JS at runtime beyond rendering.
+Auras: the base colour is painted on an isolated container; each layer is an absolutely positioned gradient with `mix-blend-mode`, `filter: blur()` and opacity, overscanned by its blur radius so edges stay soft. Patterns: one absolutely positioned layer carrying the pattern's CSS. Animated patterns ship their own `@keyframes` (prefixed `bgp-`) and stop under `prefers-reduced-motion`.
 
 ## Notes
 
-- Ships TypeScript/Svelte source; no build step needed.
-- The preset list is one module (~135 kB source); the picker and `getAura` need it, so importing the package includes all presets.
-- Many blurred layers are GPU work. Prefer few `Aura` instances on screen at once; the picker filters and uses `content-visibility` for that reason.
+- Ships TypeScript/Svelte source (Svelte `svelte` export condition); no build step needed.
+- All presets live in two modules (~230 kB source); importing the package includes both.
+- Many blurred layers are GPU work. Prefer few `Background` instances on screen at once; the picker filters and uses `content-visibility` for that reason.
+- Blend modes (e.g. the multiply glows) blend within the wrapper, not with content behind it.
