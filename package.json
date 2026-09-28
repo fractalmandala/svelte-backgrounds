@@ -1,0 +1,35 @@
+{
+	"name": "@fractaldesign/svelte-backgrounds",
+	"version": "0.1.0",
+	"description": "Drop-in aura gradient backgrounds for any Svelte 5 / SvelteKit element, component or full app — with 200+ presets and a picker.",
+	"keywords": ["svelte", "sveltekit", "gradient", "background", "aura", "mesh", "blur"],
+	"license": "MIT",
+	"type": "module",
+	"svelte": "./src/lib/index.ts",
+	"types": "./src/lib/index.ts",
+	"sideEffects": false,
+	"files": ["src/lib", "README.md"],
+	"exports": {
+		".": {
+			"types": "./src/lib/index.ts",
+			"svelte": "./src/lib/index.ts",
+			"default": "./src/lib/index.ts"
+		}
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"scripts": {
+		"dev": "vite dev",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^7.0.1",
+		"@sveltejs/kit": "^2.70.3",
+		"@sveltejs/vite-plugin-svelte": "^7.3.0",
+		"svelte": "^5.56.4",
+		"svelte-check": "^4.0.0",
+		"typescript": "^6.0.3",
+		"vite": "^8.2.2"
+	}
+}
