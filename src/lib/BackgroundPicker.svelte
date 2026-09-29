@@ -162,7 +162,7 @@
 		color: inherit;
 	}
 	:global(.bp-preview) {
-		border-radius: 1rem;
+		border-radius: 4px;
 		min-height: 11rem;
 		display: flex;
 		align-items: flex-end;
@@ -186,7 +186,7 @@
 	.bp-pill {
 		background: color-mix(in srgb, Canvas 82%, transparent);
 		color: CanvasText;
-		border-radius: 0.5rem;
+		border-radius: 4px;
 		padding: 0.5rem 0.75rem;
 	}
 	.bp-filters {
@@ -203,7 +203,7 @@
 		color: inherit;
 		background: transparent;
 		border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
-		border-radius: 999px;
+		border-radius: 4px;
 		padding: 0.3rem 0.75rem;
 	}
 	.bp-filters input {
@@ -248,7 +248,7 @@
 	}
 	:global(.bp-thumb) {
 		aspect-ratio: 4 / 3;
-		border-radius: 0.625rem;
+		border-radius: 4px;
 		outline: 2px solid transparent;
 		outline-offset: 2px;
 		transition: outline-color 0.15s;

@@ -14,7 +14,7 @@ pnpm add @fractaldesign/svelte-backgrounds
 </script>
 
 <!-- an aura on a card -->
-<Background preset="ember-glow" applyText style="padding:2rem;border-radius:1rem">
+<Background preset="ember-glow" applyText style="padding:2rem;border-radius:4px">
 	Hello
 </Background>
 

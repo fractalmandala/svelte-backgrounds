@@ -12,16 +12,16 @@
 
 	<BackgroundPicker bind:value />
 
-	<Background preset="ember-glow" applyText style="border-radius: 1rem; padding: 2rem">
+	<Background preset="ember-glow" applyText style="border-radius: 4px; padding: 2rem">
 		<h2>A card with an aura</h2>
 		<p>Any element, any component.</p>
 	</Background>
 
-	<Background preset="basic-grid" style="border-radius: 1rem; padding: 2rem; background-color: Canvas">
+	<Background preset="basic-grid" style="border-radius: 4px; padding: 2rem; background-color: Canvas">
 		<h2>A card with a pattern</h2>
 	</Background>
 
-	<Background preset="deep-lagoon" as="section" applyText style="border-radius: 1rem; padding: 2rem">
+	<Background preset="deep-lagoon" as="section" applyText style="border-radius: 4px; padding: 2rem">
 		<h2>As a &lt;section&gt;</h2>
 	</Background>
 </main>
