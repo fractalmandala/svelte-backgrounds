@@ -56,7 +56,7 @@
 			(p) =>
 				inKind(p) &&
 				(category === 'all' || p.category === category) &&
-				(tone === 'all' || (isAura(p) && (tone === 'dark') === p.dark)) &&
+				(tone === 'all' || (tone === 'dark') === p.dark) &&
 				(!q ||
 					`${p.name} ${p.description ?? ''} ${isAura(p) ? p.mood : ''} ${p.id}`
 						.toLowerCase()
@@ -120,19 +120,13 @@
 				</button>
 			{/each}
 		</div>
-		{#if kind !== 'pattern'}
-			<div class="bp-chips" role="group" aria-label="Aura tone (hides patterns)">
-				{#each ['all', 'light', 'dark'] as t (t)}
-					<button
-						type="button"
-						aria-pressed={tone === t}
-						onclick={() => (tone = t as typeof tone)}
-					>
-						{t}
-					</button>
-				{/each}
-			</div>
-		{/if}
+		<div class="bp-chips" role="group" aria-label="Tone">
+			{#each ['all', 'light', 'dark'] as t (t)}
+				<button type="button" aria-pressed={tone === t} onclick={() => (tone = t as typeof tone)}>
+					{t}
+				</button>
+			{/each}
+		</div>
 	</div>
 
 	<div class="bp-grid" role="radiogroup" aria-label="Backgrounds">

@@ -49,7 +49,7 @@ All other attributes (`class`, `style`, `id`, `aria-*`, …) are passed to the e
 <BackgroundPicker bind:value />
 ```
 
-`BackgroundPicker` shows a live sample, search, an auras/patterns switch, category filters, a light/dark filter for auras, and a grid of previews. Props: `value` (bindable), `onchange(preset)`, `preview` (default `true`), `presets` (restrict the list), `snippetName`. It inherits your text colour and font.
+`BackgroundPicker` shows a live sample, search, an auras/patterns switch, category filters, a light/dark filter, and a grid of previews. Props: `value` (bindable), `onchange(preset)`, `preview` (default `true`), `presets` (restrict the list), `snippetName`. It inherits your text colour and font.
 
 > [Aura Gradients](https://auragradients.vercel.app/) are the creation of [Cristian Olivera](https://github.com/CristianOlivera1), and this component gratefully relies on their [MIT License](https://github.com/CristianOlivera1/Aura/blob/main/LICENSE), extending it unchanged.
 
@@ -66,7 +66,7 @@ import {
 ```
 
 - **Aura** — `{ id, name, category, mood, dark, base, text, description, layers[] }`; a layer is `{ bg, blend, blur, blurDesktop?, opacity? }`. Blur uses `blur` below 768px and `blurDesktop` (falling back to `blur`) above. Categories: aura, lattice, mesh, nebula, prism, grain, glass, flux.
-- **Pattern** — `{ id, name, category, description?, css, bleed?, keyframes? }`; `css` is applied to one layer. Categories: geometric, effects, gradients, decorative.
+- **Pattern** — `{ id, name, category, dark, description?, css, bleed?, keyframes? }`; `css` is applied to one layer. `dark` is measured (each pattern rendered on white, mean luminance < 110/255), so it means "looks dark", not "meant for a dark page". Categories: geometric, effects, gradients, decorative.
 
 Ids are unique across both sets. One pattern shared an id with an aura and is `ember-glow-pattern`.
 
