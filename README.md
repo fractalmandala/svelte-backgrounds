@@ -66,7 +66,7 @@ import {
 ```
 
 - **Aura** — `{ id, name, category, mood, dark, base, text, description, layers[] }`; a layer is `{ bg, blend, blur, blurDesktop?, opacity? }`. Blur uses `blur` below 768px and `blurDesktop` (falling back to `blur`) above. Categories: aura, lattice, mesh, nebula, prism, grain, glass, flux.
-- **Pattern** — `{ id, name, category, dark, description?, css, bleed?, keyframes? }`; `css` is applied to one layer. `dark` is measured (each pattern rendered on white, mean luminance < 110/255), so it means "looks dark", not "meant for a dark page". Categories: geometric, effects, gradients, decorative.
+- **Pattern** — `{ id, name, category, dark, description?, css, bleed?, keyframes? }`; `css` is applied to one layer. `dark` was classified by hand from the rendered previews, so it means "looks dark", not "meant for a dark page". Categories: geometric, effects, gradients, decorative.
 
 Ids are unique across both sets. One pattern shared an id with an aura and is `ember-glow-pattern`.
 

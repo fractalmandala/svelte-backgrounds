@@ -30,7 +30,7 @@ export interface PatternPreset {
 	id: string
 	name: string
 	category: string
-	/** True when the pattern renders dark (paints its own dark surface), measured on a white backdrop. */
+	/** True when the pattern looks dark; false when it looks light. Classified by hand from the rendered previews. */
 	dark: boolean
 	description?: string
 	/** Declarations applied to one absolutely positioned layer, e.g. "background-image:…;background-size:24px 24px". */
